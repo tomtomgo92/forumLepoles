@@ -11,14 +11,55 @@
     </script>
 <![endif]-->
 </head>
-<body>
-	<form action="connection.php" method="post">
-<h1>Connexion</h1>
-<input type="text" name="email" placeholder="email"/>
-<input type="password" name="password" placeholder="password" />
+<header>
 
-<input type="submit" />
-
+	<h1>Connexion</h1>
+	
+</header>
+	<div class="container">
+		<div class="pp">
+			<img src="images/user.png" alt="user">
+			<h3></h3>
+			<p></p>
+		</div>
+<form action="connexion.php" method="post">
+<input type="email"name="login" placeholder="Login" id="login" >
+<input type="password"name="password" placeholder="Password" id="password" >
+<div class="button"><input type="submit" value="Connexion" id="connexion"></div>
 </form>
-</body>
+
+
+<script type="text/javascript">
+	var btn=document.getElementById("btn");
+
+	function validConnexion(){
+	
+	var error=document.querySelector('.error');
+	var login=document.getElementById('login').value; 
+	var mdp=document.getElementById('mdp').value;
+	
+
+	if (!login || !mdp || !/^[a-z0-9._-]{2,6}$/.test(login)){
+				error.style.display="block";
+				
+				error.innerHTML="Champs vides ou identifiant incorrect";
+			}
+
+	else if(login.length>45 || mdp.length>20){
+				error.style.display="block";
+				
+				error.innerHTML="Trop de caractères";
+			}
+
+	else{
+		window.location.href="http://localhost/home_page.html";
+	}
+
+		
+	}
+</script>
+
+<script type="text/javascript">+
+	btn.addEventListener("click",validConnexion,false);
+</script>
 </html>
