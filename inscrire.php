@@ -10,13 +10,9 @@
 		$pass
 	);
 
-	if ( $_POST['passwordA'] !== $_POST['passwordB'] ) {
-		header('Location: error-password.html');
-		die();
-	}
 
 	$request = $pdo->query(
-		'SELECT * FROM users WHERE email="' . $_POST['pseudo'] . '","' . $_POST['email'] . '", "' . $_POST['passwordA'] . '");'
+		'SELECT * FROM users WHERE email="' . $_POST['email'] . '";'
 	);
 	$result = $request->fetchAll();
 
@@ -24,6 +20,6 @@
 		header('Location: error-email.html');
 		die();
 	} else {
-		$requestB = $pdo->query('INSERT INTO users ( pseudo, email, password ) VALUES ("' . $_POST['pseudo'] . '","' . $_POST['email'] . '", "' . $_POST['passwordA'] . '");');
+		$requestB = $pdo->query('INSERT INTO users ( pseudo, email, password ) VALUES ("' . $_POST['pseudo'] . '","' . $_POST['email'] . '", "' . $_POST['password'] . '");');
 	}
 	header('Location: acc.html');
