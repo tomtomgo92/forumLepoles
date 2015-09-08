@@ -59,7 +59,7 @@ input[type="password"],input[type="email"],input[type="text"]{
 	padding: 5px;
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	box-sizing: border-box; 
 	width: 100%;
 	border:solid 1px #ccc;
 
