@@ -1,8 +1,7 @@
 <?php
 	session_destroy();
 
-	$dsn = 'mysql:host=localhost;dbname=siteweb';
-	$user = 'root';
+	$dsn = 'mysql:host=localhost;dbname=';
 	$pass = '';
 
 	$pdo = new PDO(
