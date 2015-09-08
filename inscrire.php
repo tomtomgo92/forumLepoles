@@ -22,7 +22,7 @@ $result = $request2->fetchAll();
 
 
 if ( $request ) {
-	 header('Location: inscrire.php');
+	 header('Location: inscrire.html');
 	 
 } else {
 
@@ -30,4 +30,3 @@ if ( $request ) {
 	echo "<h2>Email déjà utilisé</h2>";
 
 }
-
