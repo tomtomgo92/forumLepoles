@@ -16,7 +16,7 @@
 	}
 
 	$request = $pdo->query(
-		'SELECT * FROM users WHERE email="' . $_POST['email'] . '", , "' . $_POST['passwordA'] . '";'
+		'SELECT * FROM users WHERE email="' . $_POST['email'] . '", "' . $_POST['passwordA'] . '";'
 	);
 	$result = $request->fetchAll();
 
