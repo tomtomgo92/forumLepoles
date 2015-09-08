@@ -1,33 +1,30 @@
 <?php
 
-session_start();
+	$dsn = 'mysql:host=localhost;dbname=';
+	$user = 'root';
+	$pass = '';
 
-$dsn = 'mysql:host=localhost;dbname=forumlepoles';
-$user = 'root';
-$pass = '';
-
-$pdo = new PDO(
-	$dsn,
-	$user,
-	$pass
-);
-
-$request = $pdo->query(
-	'INSERT INTO `users`(id, pseudo, email, password) VALUES (NULL,"' . $_POST['pseudo'] . '","' . $_POST['email']. '","' . $_POST['password']. '");'
-);
-$request2= $pdo->query(
-	'SELECT email FROM users WHERE email="' . $_POST['email'] . '";'
+	$pdo = new PDO(
+		$dsn,
+		$user,
+		$pass
 	);
-$result = $request2->fetchAll();
 
+	if ( $_POST['passwordA'] !== $_POST['passwordB'] ) {
+		header('Location: error-password.html');
+		die();
+	}
 
-if ( $request ) {
-	 header('Location: inscrire.php');
-	 
-} else {
+	$request = $pdo->query(
+		'SELECT * FROM users WHERE email="' . $_POST['email'] . '";'
+	);
+	$result = $request->fetchAll();
 
-	//header('Location: inscription.html');
-	echo "<h2>Email déjà utilisé</h2>";
-
-}
-
+	if ( count($result) > 0 ) {
+		header('Location: error-email.html');
+		die();
+	} else {
+		$requestB = $pdo->query('INSERT INTO users ( email, password ) VALUES ("' . $_POST['email'] . '", "' . $_POST['passwordA'] . '");');
+	}
+	header('Location: connection.html');
+?>
