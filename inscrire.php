@@ -21,7 +21,7 @@
 	$result = $request->fetchAll();
 
 	if ( count($result) > 0 ) {
-		header('Location: error-email.html');
+		header('Location: acc.html');
 		die();
 	} else {
 		$requestB = $pdo->query('INSERT INTO users ( email, password ) VALUES ("' . $_POST['email'] . '", "' . $_POST['passwordA'] . '");');
